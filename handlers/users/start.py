@@ -22,12 +22,4 @@ async def bot_start(message: types.Message):
     except asyncpg.exceptions.UniqueViolationError:
         user = await db.select_user(telegram_id=message.from_user.id)
 
-    # Забираем как список или как словарь
-    # user_data = list(user)
-    #user_data_dict = dict(user)
-
-    # Забираем напрямую как из списка или словаря
-    # username = user.get("username")
-    # full_name = user[2]
-
     await message.answer(f'Здравствуйте👋, {message.from_user.full_name}!\n', reply_markup=home)

@@ -77,10 +77,6 @@ class Database:
         sql, parameters = self.format_args(sql, parameters=kwargs)
         return await self.execute(sql, *parameters, fetchrow=True)
 
-    async def save_num_car(self, telegram_id):
-        sql = 'UPDATE Users SET num_car=$1 WHERE telegram_id=$2'
-        return await self.execute(sql, telegram_id, execute=True)
-
     async def delite_user(self, telegram_id):
         sql = 'DELETE FROM Users WHERE telegram_id=$1'
         return await self.execute(sql, telegram_id, execute=True)

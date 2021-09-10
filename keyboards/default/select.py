@@ -38,16 +38,15 @@ home = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(text="Добавить категорию автомобилей 🚗"),
-        ],
-        [
             KeyboardButton(text="Справка 📜"),
         ],
         [
             KeyboardButton(text="Обновить категорию автомобиля 🚙"),
+            KeyboardButton(text="Купить подписку Prime👑"),
 
         ],
         [
-            KeyboardButton(text="Купить подписку Prime👑"),
+            KeyboardButton(text="Команды 📱"),
 
         ]
 

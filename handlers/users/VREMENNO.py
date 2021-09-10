@@ -10,8 +10,8 @@ global car_info
 
 async def send_info(message: types.Message):
 
-    caption = "{title}\n<strong>Краткое описание</strong>: {params}\n<u>Цена:" \
-              "</u> {price} <b>РУБ</b>\n<strong>Сылка на объявление</strong>: {link}"
+    caption = "{title}\n<strong>Краткое описание</strong>: {params}\n<u>Цена" \
+              "</u>: {price} <b>РУБ</b>\n<strong>Сылка на объявление</strong>: {link}"
     users = await db.get_user_paid(flag_pay=False)
     for i in users:
         user_dict = dict(i)
