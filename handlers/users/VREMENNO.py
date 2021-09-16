@@ -17,9 +17,7 @@ async def send_info(message: types.Message):
         user_dict = dict(i)
         if user_dict.get('url_avito') != None:
             print(f"проверка {user_dict.get('full_name')}")
-            # await dp.bot.send_message(user_dict.get('telegram_id'), f"{user_dict.get('url_avito')}, {user_dict.get('last_id_drom')}")
-            # data = main(user_dict.get('url_avito'), user_dict.get('last_id_drom'))
-            # asyncio.run(get_url(user_dict.get('url_avito'), user_dict.get('last_id_drom')))
+
             data = parse(user_dict.get('url_avito'), user_dict.get('last_id_drom'))
             if len(data) != 0:
                 await db.update_last_id_drom(data[0]['link'], user_dict.get('telegram_id'))
@@ -36,7 +34,9 @@ async def send_info(message: types.Message):
                     except aiogram.utils.exceptions.BotBlocked:
                         await db.delite_user(user_dict.get('telegram_id'))
                         print(f"пользователь {user_dict.get('full_name')} удален")
+                    except aiogram.utils.exceptions.BadRequest:
+                        pass
 
 
 def add_parsing():
-    scheduler.add_job(send_info, "interval", seconds=60, args=(types,))
+    scheduler.add_job(send_info, "interval", seconds=300, args=(types,))
